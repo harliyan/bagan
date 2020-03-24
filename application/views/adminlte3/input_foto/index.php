@@ -128,50 +128,53 @@ $cetak = print_data('get_where', array('users', array('id_user'=>$this->session-
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+</div>
 
 
-      <!-- Modal 1 -->
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="tambah-data" class="modal fade">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header text-center">
-              <h4 class="modal-title text-center">Form Input Foto</h4>
+<!-- Modal 1 -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="tambah-data" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title text-center">Form Input Foto</h4>
+      </div>
+      <form class="form-horizontal" action="<?php echo base_url('admin/input_foto/tambah_aksi')?>" method="post" enctype="multipart/form-data" role="form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Judul Foto</label>
+            <input type="text" class="form-control" name="judul" placeholder="Masukan Judul Foto" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Deskripsi Foto</label>
+            <textarea name="caption" class="form-control"  cols="2" rows="10"   id="caption" placeholder="Masukan Deskripsi Foto"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Google Photo Link </label>
+            <textarea name="google_photo_link" class="form-control" id="google_photo_link" placeholder="Masukan Link Google Foto Acara"></textarea>
+          </div>
+          <label for="exampleFormControlInput1">Foto Tumbnail (Max 4MB)</label>
+          <div class="col-sm">
+           <!-- <label for="exampleFormControlInput1">Keterangan Tambahan</label> -->
+           <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <!-- <label for="exampleFormControlFile1">Foto PC</label> -->
+                <input type="file" name="path_foto" class="form-control-file" id="path_foto">
+              </div>
             </div>
-            <form class="form-horizontal" action="<?php echo base_url('admin/input_foto/tambah_aksi')?>" method="post" enctype="multipart/form-data" role="form">
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Judul Foto</label>
-                  <input type="text" class="form-control" name="judul" placeholder="Masukan Judul Foto" required>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Deskripsi Foto</label>
-                  <textarea name="caption" class="form-control"  cols="2" rows="10"   id="caption" placeholder="Masukan Deskripsi Foto"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Google Photo Link </label>
-                  <textarea name="google_photo_link" class="form-control" id="google_photo_link" placeholder="Masukan Link Google Foto Acara"></textarea>
-                </div>
-                <label for="exampleFormControlInput1">Foto Tumbnail (Max 4MB)</label>
-                <div class="col-sm">
-                 <!-- <label for="exampleFormControlInput1">Keterangan Tambahan</label> -->
-                 <div class="row">
-                  <div class="col-sm">
-                    <div class="form-group">
-                      <!-- <label for="exampleFormControlFile1">Foto PC</label> -->
-                      <input type="file" name="path_foto" class="form-control-file" id="path_foto">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
-                <!-- <p id="demo"></p> -->
-                <!-- <button type="button" onclick="getLocation()">Try It</button> -->
-                <button type="button" class="btn btn-danger" data-dismiss="modal"> Batal</button>
-              </div>
-            </form>
           </div>
         </div>
-      </div>
+        <div class="modal-footer">
+          <button class="btn btn-info" type="submit"> Simpan&nbsp;</button>
+          <!-- <p id="demo"></p> -->
+          <!-- <button type="button" onclick="getLocation()">Try It</button> -->
+          <button type="button" class="btn btn-danger" data-dismiss="modal"> Batal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-     

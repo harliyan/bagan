@@ -128,6 +128,9 @@ $cetak = print_data('get_where', array('users', array('id_user'=>$this->session-
           </div>
         </div>
       </div>
+      </div>
+      </div>
+      </div>
 
 
       <!-- Modal 1 -->

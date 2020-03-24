@@ -22,6 +22,8 @@
             <div class="container">
             <div class="card mt-4">
                 <h4 class="text-center">About Aplikasi</h4>
+                <center><p>Layanan penyimpanan dokumentasi untuk keluarga, memiliki fitur bagan keluarga</p></center>
+                <center><b><p>Musaad Family</p></b></center>
             </div>
             </div>
           </div>

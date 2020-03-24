@@ -44,7 +44,7 @@
                     <div class="card-body card-body-1">
                      <center><h4 class="card-title">Dokumentasi Foto</h4> </center> 
                      <center>
-                      <img class="img-responsive " src="<?php echo base_url('adminlte3/dist/img/') ?>pictures.png" width="110px">
+                    <img class="img-responsive " src="<?php echo base_url('Shards-Dashboard/images/avatars/') ?>camera.png" width="110px">
                     </center>
 
                     <a href="foto" class="stretched-link"></a>

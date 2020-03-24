@@ -30,7 +30,7 @@
                              <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="false" aria-expanded="false">
-                               <span class="ml-1 pro-user-name">(0285)4210XX | dokumentasi</span>
+                               <span class="ml-1 pro-user-name">dokumentasi Musaad Family</span>
                             </a>
                            
                         </li>

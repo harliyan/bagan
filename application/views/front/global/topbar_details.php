@@ -7,8 +7,8 @@
                     <div class="logo">
                      
                         <a href="../../home" class="logo">
-                            <img src="<?php print base_url('adminlte3/'); ?>dist/img/1.png" alt="" height="26" class="logo-small">
-                            <img src="<?php print base_url('adminlte3/'); ?>dist/img/dokumentasi.png" alt="" height="39" class="logo-large">
+                            <img src="<?php print base_url('adminlte/'); ?>dokumentasi.png" alt="" height="26" class="logo-small">
+                            <img src="<?php print base_url('adminlte/'); ?>dokumentasi.png" alt="" height="39" class="logo-large">
                         </a>
 
                     </div>
@@ -32,7 +32,7 @@
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="false" aria-expanded="false">
-                                <img src="<?php print base_url(''); ?>adminlte3/dist/img/a.png" alt="user" class="rounded-circle"> <span class="ml-1 pro-user-name">Login<i class="mdi mdi-chevron-down"></i> </span>
+                                <img src="<?php print base_url('Shards-Dashboard/'); ?>images/avatars/boy.png" alt="user" class="rounded-circle"> <span class="ml-1 pro-user-name">Login<i class="mdi mdi-chevron-down"></i> </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                                 <div class="dropdown-item noti-title">

@@ -61,7 +61,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        E-Dokumentasi - contact : harliyan321@gmail.com<span class="d-none d-sm-inline-block"></span>
+        Musaad Family<span class="d-none d-sm-inline-block"></span>
       </div>
     </div>
   </div>
