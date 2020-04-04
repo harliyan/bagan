@@ -99,3 +99,54 @@
         } );
       </script>
 
+      <script type="text/javascript">
+
+    $(document).ready(function(){
+        var tmps = <?php echo json_encode($keluarga); ?>;
+        var datas = [];
+        var _tag = {};
+
+        tmps.forEach((item,index) => {
+          datas.push({
+            id: item.id,
+            title : item['title'],
+            name : item['nama'],
+            pid : item['parent_id'],
+            tags: [item[ 'tags' ]],
+            img: "<?php print base_url('uploads/')?>"+item['foto']
+          });
+
+          _tag['tag'+item.id] = {
+            group: true,
+            groupName: item['status'],
+            groupState: OrgChart.EXPAND,
+            template: "group_grey"
+          };
+        });
+        console.log(datas);
+        chart(_tag,datas);
+        
+    });
+
+    function chart(_tag, datas)
+    {
+        var chart = new OrgChart(document.getElementById("tree1"), {
+          // mouseScrool: OrgChart.action.none,
+          enableDragDrop: true,
+          nodeMouseClick: OrgChart.action.edit,
+          // dragDropMenu: {
+          //     addInGroup: { text: "Add in group" },
+          //     addAsChild: { text: "Add as child" }
+          // },
+          nodeBinding: {
+              field_0: "name",
+              field_1: "title",
+              img_0: "img"              
+          },
+          tags: _tag,
+          nodes: datas
+      });
+    }
+        
+</script>
+

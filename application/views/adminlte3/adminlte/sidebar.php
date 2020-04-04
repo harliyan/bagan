@@ -35,6 +35,12 @@
               <p>Input Anggota Keluarga</p>
             </a>
           </li>
+           <li class="nav-item">
+            <a href="input_keluarga/list" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Input Anggota Keluarga</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="about" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>

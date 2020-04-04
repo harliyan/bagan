@@ -33,61 +33,53 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php print base_url('adminlte'); ?>/dist/js/demo.js"></script>
 
-  <script type="text/javascript">
-       console.log("%charliyan321@gmail.com", "color: black;");
-       console.log("%c2019", "color: black;");
+<script type="text/javascript">
 
-        var chart = new OrgChart(document.getElementById("tree"), {
-        mouseScrool: OrgChart.action.none,
-        enableDragDrop: true,
-        nodeMouseClick: OrgChart.action.edit,
-        nodeMenu: {
-            details: { text: "Details" },
-            edit: { text: "Edit" },
-            add: { text: "Add" },
-            remove: { text: "Remove" }
-        },
-        dragDropMenu: {
-            addInGroup: { text: "Add in group" },
-            addAsChild: { text: "Add as child" }
-        },
-        nodeBinding: {
-            field_0: "name",
-            field_1: "title",
-            img_0: "img"
-        },
-        tags: {
-            pasutri1: {
-                group: true,
-                groupName: "Pasangan Suami Istri",
-                groupState: OrgChart.EXPAND,
-                template: "group_grey"
-            },
-             pasutri2: {
-                group: true,
-                groupName: "Pasangan Suami Istri",
-                groupState: OrgChart.EXPAND,
-                template: "group_grey"
-            },
-        },
-        // <?php 
-        //   $nodes = array(
-        //     array(
-        //       'id' => 1,
-        //        'tags' => array(
-        //        )
-        //     )
-        //   )
-        //  ?>
+    $(document).ready(function(){
+        var tmps = <?php echo json_encode($keluarga); ?>;
+        var datas = [];
+        var _tag = {};
 
-        nodes: [
-            { id: 1, tags: ["pasutri1"], name: "Billy Moore", title: "CEO", img: "https://cdn.balkan.app/shared/2.jpg" },
-            { id: 2, tags: ["pasutri1"], name: "Marley Wilson", title: "Director", img: "https://cdn.balkan.app/shared/3.jpg" },
-            { id: 4, pid: 1, name: "Billie Rose", title: "Dev Team Lead", img: "https://cdn.balkan.app/shared/5.jpg" },
-            { id: 5, pid: 1, tags: ["pasutri2"], name: "Glenn Bell", title: "HR", img: "https://cdn.balkan.app/shared/10.jpg" },
-            { id: 6, pid: 1, tags: ["pasutri2"], name: "Blair Francis", title: "HR", img: "https://cdn.balkan.app/shared/11.jpg" },
-            { id: 7, pid: 6, name: "Blair Francis", title: "HR", img: "https://cdn.balkan.app/shared/11.jpg" },
-        ]
+        tmps.forEach((item,index) => {
+          datas.push({
+            id: item.id,
+            title : item['title'],
+            name : item['nama'],
+            pid : item['parent_id'],
+            tags: [item[ 'tags' ]],
+            img: "<?php print base_url('uploads/')?>"+item['foto']
+          });
+
+          _tag['tag'+item.id] = {
+            group: true,
+            groupName: item['status'],
+            groupState: OrgChart.EXPAND,
+            template: "group_grey"
+          };
+        });
+        console.log(datas);
+        chart(_tag,datas);
+        
     });
 
-     </script>
+    function chart(_tag, datas)
+    {
+        var chart = new OrgChart(document.getElementById("tree1"), {
+          // mouseScrool: OrgChart.action.none,
+          enableDragDrop: true,
+          nodeMouseClick: OrgChart.action.edit,
+          // dragDropMenu: {
+          //     addInGroup: { text: "Add in group" },
+          //     addAsChild: { text: "Add as child" }
+          // },
+          nodeBinding: {
+              field_0: "name",
+              field_1: "title",
+              img_0: "img"              
+          },
+          tags: _tag,
+          nodes: datas
+      });
+    }
+        
+</script>

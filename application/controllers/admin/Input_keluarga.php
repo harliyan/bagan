@@ -9,6 +9,7 @@ class Input_keluarga extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_home');
 		$this->load->model('M_foto');
+		$this->load->model('M_keluarga');
 		if (empty($this->session->userdata('status')) || $this->session->userdata('status') !== "LogedIn") {
 			return redirect('logout');
 		} else {
@@ -27,8 +28,23 @@ class Input_keluarga extends CI_Controller
 		];
 		$data['doc_foto']  = $this->M_foto->tampil_admin();
 		$data['get_foto_count']	= $this->M_foto->get_foto_count();
+		$data['keluarga']   = $this->M_keluarga->getDataKeluarga();
 		$this->load->view('adminlte3/adminlte/index', $data);
 	}
+
+	public function list()
+	{
+		$data = [
+			'active_controller' => 'input_keluarga',
+			'active_function' => 'list_user',
+			'sidebar' => 'sidebar'
+		];
+		$data['doc_foto']  = $this->M_foto->tampil_admin();
+		$data['get_foto_count']	= $this->M_foto->get_foto_count();
+		$data['keluarga']   = $this->M_keluarga->getDataKeluarga();
+		$this->load->view('adminlte3/adminlte/index', $data);
+	}
+
 
 	public function tambah()
 	{
@@ -38,7 +54,7 @@ class Input_keluarga extends CI_Controller
 	public function tambah_aksi()
 	{
 
-		$config['upload_path']          = '../siapkawal/uploads/';
+		$config['upload_path']          = './uploads/';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg|bmp|tiff';
 		$config['max_size']             = 80000;
 		$config['max_width']            = 80000;
@@ -66,12 +82,12 @@ class Input_keluarga extends CI_Controller
 	public function edit($id)
 	{
 
-		$tb_telecenter = $this->M_foto->edit('tb_doc_foto', $id);
-
+		$tb_telecenter = $this->M_keluarga->edit('struktur_organisasi', $id);
 		$data['tb_telecenter'] = $tb_telecenter;
-		$data['active_controller'] = 'input_foto';
-		$data['active_function'] = 'edit';
+		$data['active_controller'] = 'input_keluarga';
+		$data['active_function'] = 'edit_user';
 		$data['sidebar'] = 'sidebar_details';
+		$data['keluarga']   = $this->M_keluarga->getDataKeluarga();
 
 		$this->load->view('adminlte3/adminlte/index', $data);
 	}
@@ -79,32 +95,71 @@ class Input_keluarga extends CI_Controller
 	public function update()
 	{
 		$id = $this->input->post('id');
-		// var_dump($id_telecenter);
-		// die();
-		$judul = $this->input->post('judul');
-		$caption = $this->input->post('caption');
-
-
+		var_dump($id);
+		$tag_ = trim('tag'.$this->input->post('tags'));
 		$data = array(
-			'id' => $id,
-			'judul' => $judul,
-			'caption' => $caption,
-
+			'title' => $this->input->post('title'),
+			'nama' => $this->input->post('nama'),
+			'parent_id' => $this->input->post('parent_id'),
+			'status' => $this->input->post('status'),
+			'status_hidup' => $this->input->post('status_hidup'),
+			'tags' => $this->input->post('tags') == 0 ? null : $tag_,
+			'status_pernikahan' => $this->input->post('status_pernikahan')
+			
 		);
 
 		$where = array(
 			'id' => $id
 		);
 
-		$this->M_foto->update($where, $data, 'tb_doc_foto');
-		redirect('admin/input_foto');
+		$this->M_keluarga->update($where, $data, 'struktur_organisasi');
+		redirect('admin/input_keluarga/list');
 	}
 
 	public function hapus($id)
 	{
-		$this->M_foto->hapus($id);
+		$this->M_keluarga->hapus($id);
 		$this->session->set_flashdata('success', 'Data Berhasil dihapus');
-		redirect('admin/input_foto'); //redirect
+		redirect('admin/input_keluarga/list'); //redirect
 	}
+
+	public function tambah_keluarga()
+	{
+		
+		$config['upload_path']          = './uploads/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg|bmp|tiff';
+		$config['max_size']             = 80000;
+		$config['max_width']            = 80000;
+		$config['max_height']           = 80000;
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('foto');
+
+		$tag_ = trim('tag'.$this->input->post('tags'));
+		$data = array(
+			'title' => $this->input->post('title'),
+			'nama' => $this->input->post('nama'),
+			'parent_id' => $this->input->post('parent_id'),
+			'status' => $this->input->post('status'),
+			'status_hidup' => $this->input->post('status_hidup'),
+			'status_pernikahan' => $this->input->post('status_pernikahan'),
+			'tags' => $this->input->post('tags') == 0 ? null : $tag_,
+			'foto' => $_FILES['foto']['name'],
+		);
+
+		$this->M_keluarga->inputDataKeluarga($data, 'struktur_organisasi');
+
+		if($this->input->post('tags') == 0){
+			$id = $this->db->insert_id();
+			$dataupdate = array(
+				'tags' => trim('tag'.$id),
+			);
+			$this->M_keluarga->editDataKeluarga($id,$dataupdate, 'struktur_organisasi');
+		}
+		
+		$this->session->set_flashdata('success', 'Data Berhasil ditambahkan');
+		redirect('admin/input_keluarga');
+	}
+
 }
 	//end input data

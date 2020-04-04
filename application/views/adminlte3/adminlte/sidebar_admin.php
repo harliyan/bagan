@@ -24,25 +24,31 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="kelola_user" class="nav-link">
+            <a href="<?php echo site_url(); ?>superadmin/kelola_user" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Kelola Users</p>
             </a>
           </li>
            <li class="nav-item">
-            <a href="input_foto" class="nav-link">
+            <a href="<?php echo site_url(); ?>superadmin/input_foto" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Input Foto</p>
             </a>
           </li>
            <li class="nav-item">
-            <a href="input_keluarga" class="nav-link">
+            <a href="<?php echo site_url(); ?>superadmin/input_keluarga" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Input Anggota Keluarga</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="about" class="nav-link">
+            <a href="<?php echo site_url(); ?>superadmin/input_keluarga/list" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Daftar Anggota Keluarga</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url(); ?>superadmin/about" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>About</p>
             </a>
